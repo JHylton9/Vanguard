@@ -13,12 +13,14 @@ from azure.identity import DefaultAzureCredential, get_bearer_token_provider
 from dotenv import load_dotenv
 from langchain_openai import AzureChatOpenAI
 
+# Repeatable, short replies: no sampling, and a 256-token ceiling on every call.
 TEMPERATURE = 0.0
 TOKEN_BUDGET = 256
 AuthMode = Literal["local", "identity"]
 
 
 def project_root() -> Path:
+    # The notebook kernel's cwd is often not the repo root, so walk upward for pyproject.toml / .env.
     starts: list[Path] = [Path.cwd()]
     try:
         from IPython import get_ipython
@@ -43,6 +45,7 @@ def project_root() -> Path:
 
 
 def load_azure_environment() -> Path:
+    # Read endpoint and key from .env so they never sit in a notebook cell.
     root = project_root()
     env_path = root / ".env"
     if not env_path.is_file():
@@ -74,6 +77,7 @@ def load_settings(auth_mode: AuthMode | None = None) -> AzureSettings:
             f"AZURE_AI_FOUNDRY_ENDPOINT is empty in {env_path}. "
             "Set it to https://ws-vanguard-lab1.openai.azure.com/"
         )
+    # "local" keeps the Foundry key; "identity" drops it and uses Azure AD instead.
     mode = (auth_mode or os.getenv("AZURE_AUTH_MODE", "local")).strip().lower()
     if mode not in ("local", "identity"):
         raise ValueError("AZURE_AUTH_MODE must be local or identity")
@@ -105,6 +109,7 @@ def build_chat_model(auth_mode: AuthMode | None = None) -> AzureChatOpenAI:
         "max_tokens": TOKEN_BUDGET,
     }
     if cfg.auth_mode == "identity":
+        # Borrow a Cognitive Services token from whoever is signed in (az login, VS Code, managed identity).
         kwargs["azure_ad_token_provider"] = get_bearer_token_provider(
             DefaultAzureCredential(),
             "https://cognitiveservices.azure.com/.default",
