@@ -1,0 +1,16 @@
+student_id,student_name,major,course_code,letter_grade,quality_points,credit_hours,term,department
+816001234,Alex Mercer,Computer Science,COMP 1101,A,4.0,3,2022-Fall,Computer Science
+816001234,Alex Mercer,Computer Science,COMP 1201,A,4.0,3,2023-Spring,Computer Science
+816001234,Alex Mercer,Computer Science,MATH 1141,B+,3.3,3,2023-Spring,Computer Science
+816001234,Alex Mercer,Computer Science,COMP 2201,A-,3.7,3,2023-Fall,Computer Science
+816001234,Alex Mercer,Computer Science,COMP 2605,B+,3.3,3,2024-Spring,Computer Science
+816001234,Alex Mercer,Computer Science,COMP 2901,A,4.0,3,2024-Fall,Computer Science
+816001234,Alex Mercer,Computer Science,COMP 3101,A-,3.7,3,2025-Spring,Computer Science
+816002345,Jordan Lee,Computer Science,COMP 1101,C+,2.3,3,2022-Fall,Computer Science
+816002345,Jordan Lee,Computer Science,COMP 1201,C,2.0,3,2023-Spring,Computer Science
+816002345,Jordan Lee,Computer Science,COMP 2201,D,1.0,3,2023-Fall,Computer Science
+816002345,Jordan Lee,Computer Science,COMP 2605,D,1.0,3,2024-Spring,Computer Science
+816003456,Samira Khan,Computer Science,COMP 1101,A,4.0,3,2023-Fall,Computer Science
+816003456,Samira Khan,Computer Science,COMP 1201,A-,3.7,3,2024-Spring,Computer Science
+816003456,Samira Khan,Computer Science,COMP 2201,B+,3.3,3,2024-Fall,Computer Science
+816003456,Samira Khan,Computer Science,COMP 2605,B,3.0,3,2025-Spring,Computer Science
